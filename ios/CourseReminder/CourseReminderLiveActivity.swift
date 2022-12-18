@@ -52,7 +52,7 @@ struct CourseReminderLiveActivity: Widget {
       } compactTrailing: {
         Image(systemName: "bell.fill")
       } minimal: {
-        Image("UetLogo")
+        Image(systemName: "bell.fill")
       }
       .widgetURL(URL(string: "http://www.apple.com"))
       .keylineTint(Color.red)

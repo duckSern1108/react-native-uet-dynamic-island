@@ -70,8 +70,7 @@ const App = () => {
             title="Start Activity"
             onPress={() =>
               
-              DynamicIslandModule.startCourseReminderActivity(
-                'Uet',
+              DynamicIslandModule.startCourseReminderActivity(                
                 'Nộp báo cáo môn Dự án công nghệ',
                 '23:59 18/12/2022'
               )
@@ -82,6 +81,7 @@ const App = () => {
             onPress={() =>
               DynamicIslandModule.updateCourseReminderActivity(
                 'Còn 1 tiếng để nộp báo cáo môn Dự án công nghệ',
+                '23:59 18/12/2022'
               )
             }
           />

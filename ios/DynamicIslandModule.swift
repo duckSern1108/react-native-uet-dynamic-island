@@ -12,6 +12,7 @@ import ActivityKit
 
 @objc(DynamicIslandModule)
 class DynamicIslandModule: NSObject {
+  var currentCourseReminderState: CourseReminderAttributes.ContentState?
   
   func areActivitiesEnabled() -> Bool {
     if #available(iOS 16.1, *) {
@@ -22,11 +23,12 @@ class DynamicIslandModule: NSObject {
   }
   
   // WIDGET Course Reminder
-  @objc(startCourseReminderActivity:withMessage:withImage:)
-  public func startCourseReminderActivity(title: String, message: String, image: String) -> Void {
+  @objc(startCourseReminderActivity:withMessage:)
+  public func startCourseReminderActivity(notiText: String, notiTime: String) -> Void {
     if #available(iOS 16.1, *) {
-      let initialContentState = CourseReminderAttributes.ContentState(notiText: "Nộp báo cáo môn Dự án công nghệ", notiTime: "23:59 18/12/2022")
-      let activityAttributes = CourseReminderAttributes(name: "Son")
+      let initialContentState = CourseReminderAttributes.ContentState(notiText: notiText, notiTime: notiTime)
+      let activityAttributes = CourseReminderAttributes(name: notiText)
+      self.currentCourseReminderState = initialContentState
       
       do {
         _ = try Activity.request(attributes: activityAttributes, contentState: initialContentState)
@@ -37,11 +39,12 @@ class DynamicIslandModule: NSObject {
     }
   }
   
-  @objc(updateCourseReminderActivity:)
-  public func updateCourseReminderActivity(message: String) -> Void {
+  @objc(updateCourseReminderActivity:withMessage:)
+  public func updateCourseReminderActivity(notiText: String, notiTime: String) -> Void {
     if #available(iOS 16.1, *) {
       
-      let notificationStatus = CourseReminderAttributes.ContentState(notiText: "Còn 1 tiếng đẻ nộp báo cáo môn dự án công nghệ", notiTime: "23:59 18/12/2022")
+      let notificationStatus = CourseReminderAttributes.ContentState(notiText: notiText, notiTime: notiTime)
+      self.currentCourseReminderState = notificationStatus
       let alertConfiguration = AlertConfiguration(title: "Notification Update", body: "Notification update.", sound: .default)
       
       Task {
@@ -55,7 +58,8 @@ class DynamicIslandModule: NSObject {
   @objc
   public func endCourseReminderActivty() -> Void {
     if #available(iOS 16.1, *) {
-      let notificationStatus = CourseReminderAttributes.ContentState(notiText: "Còn 1 tiếng đẻ nộp báo cáo môn dự án công nghệ", notiTime: "23:59 18/12/2022")
+      guard let currentCourseReminderState = currentCourseReminderState else { return }
+      let notificationStatus = CourseReminderAttributes.ContentState(notiText: currentCourseReminderState.notiText, notiTime: currentCourseReminderState.notiTime)
       
       
       Task {
