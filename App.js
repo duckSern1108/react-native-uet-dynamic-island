@@ -6,60 +6,51 @@
  * @flow strict-local
  */
 
-import React from 'react';
-import type {Node} from 'react';
+import React, {useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
   StatusBar,
-  StyleSheet,
-  Text,
   useColorScheme,
   View,
+  NativeModules,
+  Button,
+  Linking,
+  Alert,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const {DynamicIslandModule} = NativeModules;
+import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
 
-/* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
- * LTI update could not be added via codemod */
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
-const App: () => Node = () => {
+const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  const handlerDeepLink = url => {
+    const action = url.replace('dynamicisland://', '');
+    DynamicIslandModule.endFoodOrderActivity();
+    Alert.alert(action);
+  };
+
+  useEffect(() => {
+    Linking.getInitialURL()
+      .then(url => {
+        if (url) {
+          handlerDeepLink(url);
+        }
+      })
+      .catch(err => {
+        console.warn('An error occurred', err);
+      });
+    Linking.addEventListener('url', ({url}) => {
+      if (url) {
+        handlerDeepLink(url);
+      }
+    });
+  }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -75,43 +66,33 @@ const App: () => Node = () => {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+          <Button
+            title="Start Activity"
+            onPress={() =>
+              
+              DynamicIslandModule.startCourseReminderActivity(
+                'Uet',
+                'Nộp báo cáo môn Dự án công nghệ',
+                '23:59 18/12/2022'
+              )
+            }
+          />
+          <Button
+            title="Update Activity"
+            onPress={() =>
+              DynamicIslandModule.updateCourseReminderActivity(
+                'Còn 1 tiếng để nộp báo cáo môn Dự án công nghệ',
+              )
+            }
+          />
+          <Button
+            title="End Activity"
+            onPress={() => DynamicIslandModule.endCourseReminderActivty()}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;

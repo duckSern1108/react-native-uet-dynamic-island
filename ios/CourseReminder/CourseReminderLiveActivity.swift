@@ -9,17 +9,6 @@ import ActivityKit
 import WidgetKit
 import SwiftUI
 
-struct CourseReminderAttributes: ActivityAttributes {
-  public struct ContentState: Codable, Hashable {
-    // Dynamic stateful properties about your activity go here!
-    var value: Int
-    var notiText: String
-    var notiTime: String = "23h59 18/12/2022"
-  }
-  
-  // Fixed non-changing properties about your activity go here!
-  var name: String
-}
 
 struct CourseReminderLiveActivity: Widget {
   var body: some WidgetConfiguration {
@@ -73,7 +62,7 @@ struct CourseReminderLiveActivity: Widget {
 
 struct CourseReminderLiveActivity_Previews: PreviewProvider {
   static let attributes = CourseReminderAttributes(name: "Me")
-  static let contentState = CourseReminderAttributes.ContentState(value: 3, notiText: "Xyz", notiTime: "23:59")
+  static let contentState = CourseReminderAttributes.ContentState(notiText: "Xyz", notiTime: "23:59")
   
   static var previews: some View {
     attributes

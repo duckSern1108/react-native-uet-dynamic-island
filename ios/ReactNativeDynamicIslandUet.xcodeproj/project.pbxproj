@@ -23,6 +23,10 @@
 		983C2D42294F06E4008AD99B /* CourseReminder.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 983C2D3E294F06E3008AD99B /* CourseReminder.intentdefinition */; };
 		983C2D43294F06E4008AD99B /* CourseReminder.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 983C2D3E294F06E3008AD99B /* CourseReminder.intentdefinition */; };
 		983C2D46294F06E4008AD99B /* CourseReminderExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 983C2D32294F06E3008AD99B /* CourseReminderExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		983C2D4D294F08DC008AD99B /* DynamicIslandModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983C2D4C294F08DC008AD99B /* DynamicIslandModule.swift */; };
+		983C2D4F294F0973008AD99B /* LiveActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983C2D4E294F0973008AD99B /* LiveActivityAttributes.swift */; };
+		983C2D50294F0973008AD99B /* LiveActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983C2D4E294F0973008AD99B /* LiveActivityAttributes.swift */; };
+		983C2D52294F0B07008AD99B /* DynamicIslandModuleBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 983C2D51294F0B07008AD99B /* DynamicIslandModuleBridge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +86,10 @@
 		983C2D3E294F06E3008AD99B /* CourseReminder.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = CourseReminder.intentdefinition; sourceTree = "<group>"; };
 		983C2D3F294F06E4008AD99B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		983C2D41294F06E4008AD99B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		983C2D4B294F08DB008AD99B /* ReactNativeDynamicIslandUet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReactNativeDynamicIslandUet-Bridging-Header.h"; sourceTree = "<group>"; };
+		983C2D4C294F08DC008AD99B /* DynamicIslandModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicIslandModule.swift; sourceTree = "<group>"; };
+		983C2D4E294F0973008AD99B /* LiveActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityAttributes.swift; sourceTree = "<group>"; };
+		983C2D51294F0B07008AD99B /* DynamicIslandModuleBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicIslandModuleBridge.m; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -140,6 +148,10 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				983C2D4C294F08DC008AD99B /* DynamicIslandModule.swift */,
+				983C2D4B294F08DB008AD99B /* ReactNativeDynamicIslandUet-Bridging-Header.h */,
+				983C2D4E294F0973008AD99B /* LiveActivityAttributes.swift */,
+				983C2D51294F0B07008AD99B /* DynamicIslandModuleBridge.m */,
 			);
 			name = ReactNativeDynamicIslandUet;
 			sourceTree = "<group>";
@@ -292,7 +304,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1420;
 					};
 					983C2D31294F06E3008AD99B = {
 						CreatedOnToolsVersion = 14.2;
@@ -509,8 +521,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				983C2D4F294F0973008AD99B /* LiveActivityAttributes.swift in Sources */,
+				983C2D52294F0B07008AD99B /* DynamicIslandModuleBridge.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				983C2D4D294F08DC008AD99B /* DynamicIslandModule.swift in Sources */,
 				983C2D43294F06E4008AD99B /* CourseReminder.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,6 +534,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				983C2D50294F0973008AD99B /* LiveActivityAttributes.swift in Sources */,
 				983C2D3B294F06E3008AD99B /* CourseReminderLiveActivity.swift in Sources */,
 				983C2D3D294F06E3008AD99B /* CourseReminder.swift in Sources */,
 				983C2D39294F06E3008AD99B /* CourseReminderBundle.swift in Sources */,
@@ -546,6 +562,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-ReactNativeDynamicIslandUet-ReactNativeDynamicIslandUetTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -573,6 +590,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-ReactNativeDynamicIslandUet-ReactNativeDynamicIslandUetTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = ReactNativeDynamicIslandUetTests/Info.plist;
@@ -615,6 +633,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = ReactNativeDynamicIslandUet;
+				SWIFT_OBJC_BRIDGING_HEADER = "ReactNativeDynamicIslandUet-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -642,6 +661,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = ReactNativeDynamicIslandUet;
+				SWIFT_OBJC_BRIDGING_HEADER = "ReactNativeDynamicIslandUet-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
