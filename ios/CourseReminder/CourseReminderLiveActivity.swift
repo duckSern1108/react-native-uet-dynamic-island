@@ -24,7 +24,7 @@ struct CourseReminderLiveActivity: Widget {
             .foregroundColor(.gray)
         }
       }
-      .activityBackgroundTint(Color.cyan)
+      .activityBackgroundTint(Color.white)
       .activitySystemActionForegroundColor(Color.black)
       
     } dynamicIsland: { context in
